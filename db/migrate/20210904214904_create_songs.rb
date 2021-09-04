@@ -5,7 +5,7 @@ class CreateSongs < ActiveRecord::Migration[6.1]
       t.string :artist
       t.string :img_url
       t.string :link
-      t.integer :genre_id
+      t.belongs_to :genre, foreign_key: true
 
       t.timestamps
     end

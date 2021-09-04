@@ -26,9 +26,11 @@ ActiveRecord::Schema.define(version: 2021_09_04_214904) do
     t.string "artist"
     t.string "img_url"
     t.string "link"
-    t.integer "genre_id"
+    t.bigint "genre_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["genre_id"], name: "index_songs_on_genre_id"
   end
 
+  add_foreign_key "songs", "genres"
 end
