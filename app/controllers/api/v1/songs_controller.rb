@@ -2,7 +2,7 @@ class Api::V1::SongsController < ApplicationController
 
     def index
         songs = Song.all
-        render json: songs
+        render json: SongSerializer.new(songs)
     end
 
     def create
@@ -11,7 +11,7 @@ class Api::V1::SongsController < ApplicationController
             render json: song, status: :accepted
         else
             render json: {errors: song.errors.full_messages}, status: :unprocessible_entity
-            
+
         end
     end
 
