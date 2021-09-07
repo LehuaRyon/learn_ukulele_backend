@@ -18,7 +18,7 @@ class Api::V1::SongsController < ApplicationController
     def destroy
         song = Song.find_by_id(params[:id])
         song.destroy
-        render json: {message: 'Song successfully deleted!'}
+        render json: {message: "Song successfully deleted! #{song.title}"}
     end
 
     private
