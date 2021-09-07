@@ -15,6 +15,11 @@ class Api::V1::SongsController < ApplicationController
         end
     end
 
+    def destroy
+        song = Song.find_by_id(params[:id])
+        song.destroy
+    end
+
     private
 
     def song_params
