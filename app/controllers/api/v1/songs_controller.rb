@@ -21,6 +21,15 @@ class Api::V1::SongsController < ApplicationController
         render json: {message: "Song '#{song.title}' successfully deleted!"}
     end
 
+    def update
+        song = Song.find_by_id(params[:id])
+        if song.update(song_params)
+            render json: SongSerializer.new(song)
+        else
+            render json: {error: "Could not update song."}
+        end
+    end
+
     private
 
     def song_params
